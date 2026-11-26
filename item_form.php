@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!$errors) {
         if ($item) {
             $photo = $newPhoto ?? $item['photo_path'];
-            // Edits by a normal user go back to Pending for re-approval
+            
             $approval = $isStaff ? $item['approval_status'] : 'Pending';
             $u = $pdo->prepare('UPDATE items SET report_type=?, item_name=?, description=?, category_id=?, location_id=?, date_happened=?, photo_path=?, approval_status=? WHERE item_id=?');
             $u->execute([$f['report_type'], $f['item_name'], $f['description'], (int)$f['category_id'], (int)$f['location_id'], $f['date_happened'], $photo, $approval, $id]);

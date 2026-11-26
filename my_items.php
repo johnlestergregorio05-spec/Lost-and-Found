@@ -3,7 +3,7 @@ require_once __DIR__ . '/includes/functions.php';
 require_login();
 $me = current_user();
 
-// Delete own report (POST + CSRF)
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delete') {
     verify_csrf();
     $id = (int)($_POST['item_id'] ?? 0);

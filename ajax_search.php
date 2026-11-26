@@ -1,5 +1,5 @@
 <?php
-// AJAX endpoint: returns item cards (HTML) for the Browse page
+
 require_once __DIR__ . '/includes/functions.php';
 
 [$where, $params] = build_item_filter($_GET, true);

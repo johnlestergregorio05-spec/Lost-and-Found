@@ -1,14 +1,7 @@
--- Web-Based Campus Lost and Found Asset Tracking System
--- Database schema (3NF) + seed data
--- Import via phpMyAdmin or:  mysql -u root < database.sql
 
 DROP DATABASE IF EXISTS campus_lostfound;
 CREATE DATABASE campus_lostfound CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE campus_lostfound;
-
--- ---------------------------------------------------------------
--- Lookup tables
--- ---------------------------------------------------------------
 CREATE TABLE roles (
     role_id    TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     role_name  VARCHAR(30) NOT NULL UNIQUE
@@ -23,10 +16,6 @@ CREATE TABLE locations (
     location_id   INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     location_name VARCHAR(100) NOT NULL UNIQUE
 ) ENGINE=InnoDB;
-
--- ---------------------------------------------------------------
--- Users
--- ---------------------------------------------------------------
 CREATE TABLE users (
     user_id        INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     role_id        TINYINT UNSIGNED NOT NULL,
@@ -40,10 +29,6 @@ CREATE TABLE users (
     CONSTRAINT fk_users_role FOREIGN KEY (role_id) REFERENCES roles(role_id)
         ON UPDATE CASCADE ON DELETE RESTRICT
 ) ENGINE=InnoDB;
-
--- ---------------------------------------------------------------
--- Items (lost / found reports)
--- ---------------------------------------------------------------
 CREATE TABLE items (
     item_id         INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     reporter_id     INT UNSIGNED NOT NULL,
@@ -67,10 +52,6 @@ CREATE TABLE items (
     INDEX idx_items_filter (report_type, claim_status, approval_status),
     INDEX idx_items_date (date_happened)
 ) ENGINE=InnoDB;
-
--- ---------------------------------------------------------------
--- Claims (a user asks to claim an item; staff/admin verifies)
--- ---------------------------------------------------------------
 CREATE TABLE claims (
     claim_id      INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     item_id       INT UNSIGNED NOT NULL,
@@ -85,10 +66,6 @@ CREATE TABLE claims (
     CONSTRAINT fk_claims_reviewer FOREIGN KEY (reviewed_by) REFERENCES users(user_id)  ON UPDATE CASCADE ON DELETE SET NULL,
     UNIQUE KEY uq_claim_once (item_id, claimant_id)
 ) ENGINE=InnoDB;
-
--- ---------------------------------------------------------------
--- Audit logs
--- ---------------------------------------------------------------
 CREATE TABLE audit_logs (
     log_id      BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     user_id     INT UNSIGNED NULL,
@@ -102,11 +79,6 @@ CREATE TABLE audit_logs (
         ON UPDATE CASCADE ON DELETE SET NULL,
     INDEX idx_audit_created (created_at)
 ) ENGINE=InnoDB;
-
--- ---------------------------------------------------------------
--- Seed data
--- Demo password for all accounts below: Password123
--- ---------------------------------------------------------------
 INSERT INTO roles (role_name) VALUES ('Admin'), ('Staff'), ('User');
 
 INSERT INTO categories (category_name) VALUES
