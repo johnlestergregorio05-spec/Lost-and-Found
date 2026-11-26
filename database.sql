@@ -114,8 +114,7 @@ INSERT INTO categories (category_name) VALUES
 ('Clothing'), ('Books / School Supplies'), ('Umbrella / Tumbler'), ('Others');
 
 INSERT INTO locations (location_name) VALUES
-('Main Library'), ('Canteen'), ('Gymnasium'), ('Admin Building'),
-('Computer Laboratory'), ('Science Building'), ('Parking Area'), ('Chapel'), ('Campus Grounds');
+('Library'), ('Canteen'), ('Gymnasium'), ('Computer Laboratory');
 
 INSERT INTO users (role_id, school_id_no, full_name, email, contact_no, password_hash) VALUES
 (1, 'ADM-0001', 'System Administrator', 'admin@campus.edu',   '09170000001', '$2y$10$eQF6pDLmbakOVsIv2w4tveAlHJCREDVoevXsTmxSvx7wfNZ0HzvJ.'),
