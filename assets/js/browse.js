@@ -1,4 +1,3 @@
-// AJAX search + filtering for the Browse page (no page reload)
 (function () {
   'use strict';
   var form = document.getElementById('filterForm');

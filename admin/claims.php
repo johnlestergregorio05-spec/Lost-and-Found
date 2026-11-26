@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ->execute([$decision, $me['user_id'], $claimId]);
             if ($decision === 'Approved') {
                 $pdo->prepare("UPDATE items SET claim_status='Claimed' WHERE item_id=?")->execute([$cl['item_id']]);
-                // Other pending claims on the same item are rejected automatically
+                
                 $pdo->prepare("UPDATE claims SET claim_state='Rejected', reviewed_by=?, reviewed_at=NOW()
                                WHERE item_id=? AND claim_id<>? AND claim_state='Pending'")
                     ->execute([$me['user_id'], $cl['item_id'], $claimId]);

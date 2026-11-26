@@ -1,0 +1,7 @@
+# Uploaded photos must never be executed as scripts
+php_flag engine off
+RemoveHandler .php .phtml .php3 .php4 .php5 .phps
+<FilesMatch "\.(php|phtml|phar)$">
+    Require all denied
+</FilesMatch>
+Options -Indexes

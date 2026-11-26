@@ -1,4 +1,3 @@
-// Client-side form validation (Bootstrap), confirm dialogs, photo preview
 (function () {
   'use strict';
 
@@ -12,21 +11,16 @@
       form.classList.add('was-validated');
     });
   });
-
-  // <form data-confirm="..."> asks before submitting
   document.querySelectorAll('form[data-confirm]').forEach(function (form) {
     form.addEventListener('submit', function (e) {
       if (!window.confirm(form.getAttribute('data-confirm'))) e.preventDefault();
     });
   });
-  // <button data-confirm-btn="..."> asks before submitting its form
   document.querySelectorAll('button[data-confirm-btn]').forEach(function (btn) {
     btn.addEventListener('click', function (e) {
       if (!window.confirm(btn.getAttribute('data-confirm-btn'))) e.preventDefault();
     });
   });
-
-  // Photo preview + size/type check
   var photo = document.getElementById('photo'), preview = document.getElementById('preview');
   if (photo && preview) {
     photo.addEventListener('change', function () {

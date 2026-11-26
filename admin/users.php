@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             audit('CREATE', 'user', (int)$pdo->lastInsertId(), 'Admin created account: ' . $email);
             flash('success', 'User created.'); redirect('admin/users.php');
         }
-    } elseif ($uid && $uid !== (int)$me['user_id']) {   // admins cannot change/delete themselves here
+    } elseif ($uid && $uid !== (int)$me['user_id']) {   
         if ($action === 'set_role') {
             $role = (int)($_POST['role_id'] ?? 0);
             if (in_array($role, array_map('intval', $roleIds), true)) {

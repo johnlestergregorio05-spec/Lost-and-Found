@@ -1,17 +1,17 @@
 <?php
-// ---------------------------------------------------------------
-// Configuration + database connection (PDO)
-// ---------------------------------------------------------------
+
+
+
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'campus_lostfound');
 define('DB_USER', 'root');
-define('DB_PASS', '');          // XAMPP default is empty
+define('DB_PASS', '');          
 
 define('APP_NAME', 'Campus Lost & Found');
 define('UPLOAD_DIR', dirname(__DIR__) . '/uploads/');
-define('MAX_UPLOAD_BYTES', 2 * 1024 * 1024); // 2 MB
+define('MAX_UPLOAD_BYTES', 2 * 1024 * 1024); 
 
-// Auto-detect the URL path of the project folder (e.g. /lostfound)
+
 $docRoot = rtrim(str_replace('\\', '/', realpath($_SERVER['DOCUMENT_ROOT'] ?? '') ?: ''), '/');
 $appRoot = str_replace('\\', '/', realpath(dirname(__DIR__)));
 define('BASE_URL', $docRoot !== '' ? str_replace($docRoot, '', $appRoot) : '/lostfound');

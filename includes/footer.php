@@ -3,8 +3,8 @@
 
   <footer class="site-footer">
     <div class="wrap">
-      <p><strong>Lost and Found Office</strong>, Student Affairs, Room 101</p>
-      <p>Open Monday to Friday, 8:00 AM to 5:00 PM</p>
+      <p><strong>About TraceIT</strong>, Open Monday to Friday, 8:00 AM to 5:00 PM</p>
+      <p><strong>Designed by:</strong> John Lester Gregorio, Rommel Barammeda, Josiah Eros Sison.</p>
     </div>
   </footer>
 

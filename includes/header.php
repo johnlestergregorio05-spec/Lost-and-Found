@@ -9,6 +9,7 @@ $user = current_user();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?= e($pageTitle) ?> | <?= e(APP_NAME) ?></title>
+  <link rel="icon" type="image/png" href="<?= url('assets/img/favicon.png') ?>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:wght@600;800&display=swap" rel="stylesheet">
@@ -18,7 +19,7 @@ $user = current_user();
 <body>
 
   <header class="site-header">
-    <a class="logo" href="<?= url('index.php') ?>">Campus Lost &amp; Found</a>
+    <a class="logo" href="<?= url('index.php') ?>"><img src="<?= url('assets/img/logo.png') ?>" alt="" width="33" height="40">TraceIT</a>
     <nav class="nav" aria-label="Main">
       <a href="<?= url('browse.php') ?>">Browse items</a>
       <?php if ($user): ?>
